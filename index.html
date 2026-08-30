@@ -113,6 +113,14 @@
     .step-desc { font-size: 0.85rem; line-height: 1.8; color: rgba(247,243,238,0.55); }
     .process-couple-img { width: 100%; height: 280px; object-fit: cover; object-position: center top; margin-top: 4rem; opacity: 0.75; }
 
+    /* INSTAGRAM CTA */
+    #instagram-follow { background: var(--warm-white); padding: 5.5rem 6rem; text-align: center; }
+    .instagram-copy { font-size: 1rem; line-height: 1.9; color: var(--muted); max-width: 520px; margin: 0 auto 2.2rem; }
+    .instagram-cta { display: inline-flex; align-items: center; gap: 0.65rem; padding: 0.9rem 1.75rem; font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 400; color: var(--charcoal); text-decoration: none; border-bottom: 1px solid var(--gold-light); transition: color 0.3s, border-color 0.3s; }
+    .instagram-cta:hover { color: var(--gold); border-color: var(--gold); }
+    .instagram-cta svg { flex-shrink: 0; opacity: 0.85; }
+    .instagram-cta:hover svg { opacity: 1; }
+
     /* BOOKING */
     #booking { background: var(--cream); display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
     .booking-info p { font-size: 1rem; line-height: 1.9; color: var(--muted); margin-bottom: 1.5rem; }
@@ -175,6 +183,7 @@
       nav { padding: 1.2rem 2rem; }
       .nav-links, .nav-cta { display: none; }
       section { padding: 4rem 2rem; }
+      #instagram-follow { padding: 4rem 2rem; }
       #about, #booking { grid-template-columns: 1fr; gap: 3rem; }
       .services-grid { grid-template-columns: 1fr; }
       .service-card { border-right: none; border-bottom: 1px solid var(--border); }
@@ -915,6 +924,21 @@
 </section>
 
 
+
+<section id="instagram-follow">
+  <p class="section-eyebrow">Follow Along</p>
+  <h2 class="section-title">Find Blend Studio<br/>on <em>Instagram.</em></h2>
+  <div class="divider" style="margin-left:auto; margin-right:auto;"></div>
+  <p class="instagram-copy">Recent weddings, new faces, behind-the-scenes moments, and a little of what happens in between.</p>
+  <a href="https://www.instagram.com/design.blendstudio" target="_blank" rel="noopener" class="instagram-cta">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect x="2.5" y="2.5" width="19" height="19" rx="5" stroke="var(--gold)" stroke-width="1.3"/>
+      <circle cx="12" cy="12" r="4.8" stroke="var(--gold)" stroke-width="1.3"/>
+      <circle cx="17.6" cy="6.4" r="1.1" fill="var(--gold)"/>
+    </svg>
+    @design.blendstudio →
+  </a>
+</section>
 
 <section id="booking">
 <div class="availability-note" style="margin-bottom:2rem; padding:1rem 1.25rem; border:1px solid rgba(0,0,0,0.08); background:#f8f4ee; max-width:720px;">
