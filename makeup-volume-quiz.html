@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZP8SBN6QPL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-ZP8SBN6QPL');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="color-scheme" content="light only" />
+  <meta name="theme-color" content="#fdfaf7" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>What's Your Makeup Volume? | Blend Studio</title>
+  <meta name="description" content="Take Blend Studio's Makeup Volume quiz to find the level of makeup that feels most like you — from bare and natural to full statement glam." />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream: #f7f3ee; --warm-white: #fdfaf7; --charcoal: #2a2622;
+      --muted: #7a7168; --gold: #b89a6e; --gold-light: #d4b896; --border: #e0d8ce;
+      --powder: #a9c7d8; --powder-deep: #86adc2; --powder-pale: #eaf1f4;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Jost', sans-serif; background: var(--warm-white); color: var(--charcoal); font-weight: 300; overflow-x: hidden; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.5rem 4rem; background: rgba(253,250,247,0.92); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+    .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 400; letter-spacing: 0.12em; color: var(--charcoal); text-decoration: none; }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a { font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.3s; }
+    .nav-links a:hover { color: var(--charcoal); }
+    .nav-cta { font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; padding: 0.65rem 1.6rem; border: 1px solid var(--gold); color: var(--gold); text-decoration: none; transition: all 0.3s; }
+    .nav-cta:hover { background: var(--gold); color: white; }
+
+    main { padding-top: 6.5rem; }
+
+    .quiz-wrap { max-width: 640px; margin: 0 auto; padding: 5rem 2rem 8rem; min-height: 75vh; display: flex; flex-direction: column; justify-content: center; }
+
+    /* SCREENS */
+    .quiz-screen { display: none; }
+    .quiz-screen.active { display: block; animation: fadeUp 0.5s ease; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* INTRO */
+    .quiz-eyebrow { font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.5rem; text-align: center; }
+    .quiz-title { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(2.4rem, 5vw, 3.6rem); line-height: 1.15; letter-spacing: 0.01em; color: var(--powder-deep); text-align: center; margin-bottom: 1.75rem; text-transform: uppercase; }
+    .quiz-intro-copy { font-size: 1.05rem; line-height: 1.9; color: var(--muted); text-align: center; max-width: 44ch; margin: 0 auto 3rem; }
+    .quiz-center { display: flex; justify-content: center; }
+
+    .btn-quiz-primary { display: inline-block; padding: 1rem 2.6rem; background: var(--charcoal); color: var(--warm-white); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.22em; text-transform: uppercase; border: none; cursor: pointer; transition: background 0.3s; font-family: 'Jost', sans-serif; }
+    .btn-quiz-primary:hover { background: var(--gold); }
+    .btn-quiz-primary:disabled { background: var(--border); color: var(--muted); cursor: not-allowed; }
+
+    /* PROGRESS */
+    .quiz-progress { font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--powder-deep); text-align: center; margin-bottom: 3rem; }
+    .quiz-progress-track { width: 100%; max-width: 220px; height: 1px; background: var(--border); margin: 0.9rem auto 0; position: relative; }
+    .quiz-progress-fill { position: absolute; top: 0; left: 0; height: 1px; background: var(--powder-deep); transition: width 0.4s ease; }
+
+    /* QUESTION */
+    .quiz-question { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(1.5rem, 3vw, 2.1rem); line-height: 1.35; color: var(--charcoal); text-align: center; margin-bottom: 3rem; }
+
+    .quiz-options { display: flex; flex-direction: column; gap: 0.9rem; margin-bottom: 3rem; }
+    .quiz-option { display: flex; align-items: center; gap: 1rem; text-align: left; width: 100%; padding: 1.15rem 1.5rem; background: var(--warm-white); border: 1px solid var(--border); cursor: pointer; font-family: 'Jost', sans-serif; font-size: 0.95rem; font-weight: 300; color: var(--charcoal); line-height: 1.6; transition: border-color 0.25s, background 0.25s; }
+    .quiz-option:hover { border-color: var(--powder-deep); }
+    .quiz-option .opt-letter { flex-shrink: 0; width: 1.9rem; height: 1.9rem; border: 1px solid var(--border); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.72rem; letter-spacing: 0.05em; color: var(--muted); transition: all 0.25s; }
+    .quiz-option.selected { border-color: var(--powder-deep); background: var(--powder-pale); }
+    .quiz-option.selected .opt-letter { background: var(--powder-deep); border-color: var(--powder-deep); color: white; }
+
+    .quiz-nav-row { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+    .quiz-back { font-size: 0.78rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); text-decoration: none; border-bottom: 1px solid transparent; background: none; border-top: none; border-left: none; border-right: none; cursor: pointer; font-family: 'Jost', sans-serif; padding: 0.4rem 0; transition: color 0.3s, border-color 0.3s; }
+    .quiz-back:hover { color: var(--charcoal); border-color: var(--gold-light); }
+    .quiz-back.hidden { visibility: hidden; }
+
+    /* RESULT */
+    .result-eyebrow { font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted); text-align: center; margin-bottom: 1rem; }
+    .result-number { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(6rem, 20vw, 10rem); line-height: 1; color: var(--powder); text-align: center; }
+    .result-name { font-family: 'Cormorant Garamond', serif; font-weight: 400; font-size: clamp(1.8rem, 4vw, 2.6rem); letter-spacing: 0.08em; text-transform: uppercase; color: var(--charcoal); text-align: center; margin: 0.5rem 0 2.5rem; }
+    .result-divider { width: 3rem; height: 1px; background: var(--gold); margin: 0 auto 2.5rem; }
+    .result-copy p { font-size: 1.02rem; line-height: 1.9; color: var(--charcoal); max-width: 52ch; margin: 0 auto 1.3rem; }
+    .result-booking-note { margin-top: 2.5rem; padding: 1.6rem 1.8rem; background: var(--cream); border: 1px solid var(--border); max-width: 52ch; margin-left: auto; margin-right: auto; }
+    .result-booking-note p { font-size: 0.92rem; line-height: 1.8; color: var(--muted); margin: 0; text-align: center; }
+    .result-booking-note strong { color: var(--charcoal); font-weight: 500; }
+
+    .result-actions { display: flex; align-items: center; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin-top: 3rem; }
+    .btn-result-primary { display: inline-block; padding: 1rem 2.4rem; background: var(--gold); color: white; text-decoration: none; font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; transition: background 0.3s; }
+    .btn-result-primary:hover { background: var(--charcoal); }
+    .btn-result-ghost { font-size: 0.78rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); text-decoration: none; border: none; background: none; border-bottom: 1px solid var(--border); padding-bottom: 2px; cursor: pointer; font-family: 'Jost', sans-serif; transition: color 0.3s, border-color 0.3s; }
+    .btn-result-ghost:hover { color: var(--charcoal); border-color: var(--gold-light); }
+
+    footer { background: var(--charcoal); color: rgba(247,243,238,0.5); padding: 3rem 6rem; text-align: center; }
+    .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--cream); letter-spacing: 0.12em; margin-bottom: 0.6rem; }
+    .footer-logo span { color: var(--gold); }
+    .footer-tagline { font-size: 0.82rem; line-height: 1.7; }
+
+    @media (max-width: 900px) {
+      nav { padding: 1.2rem 2rem; }
+      .nav-links, .nav-cta { display: none; }
+      .quiz-wrap { padding: 3.5rem 1.5rem 5rem; }
+      footer { padding: 2.5rem 2rem; }
+      .quiz-option { padding: 1rem 1.15rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html#hero-banner" class="nav-logo">Blend<span>.</span>Studio</a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#expect">What to Expect</a></li>
+    <li><a href="index.html#beforeafter">Before &amp; After</a></li>
+    <li><a href="index.html#mywork">My Work</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#skincare">Skincare Guide</a></li>
+    <li><a href="index.html#process">Experience</a></li>
+    <li><a href="index.html#testimonials">Reviews</a></li><li><a href="index.html#booking">Contact</a></li>
+  </ul>
+  <a href="index.html#booking" class="nav-cta">Book Now</a>
+</nav>
+
+<main>
+  <div class="quiz-wrap">
+
+    <!-- INTRO SCREEN -->
+    <section class="quiz-screen active" id="screen-intro">
+      <p class="quiz-eyebrow">Blend Studio</p>
+      <h1 class="quiz-title">What's Your<br/>Makeup Volume?</h1>
+      <p class="quiz-intro-copy">"Natural" means something different to everyone. Answer a few quick questions to find the level that feels like you.</p>
+      <div class="quiz-center">
+        <button type="button" class="btn-quiz-primary" id="btn-start">Find My Volume</button>
+      </div>
+    </section>
+
+    <!-- QUIZ SCREEN -->
+    <section class="quiz-screen" id="screen-quiz">
+      <p class="quiz-progress">
+        <span id="progress-text">01 / 06</span>
+        <span class="quiz-progress-track"><span class="quiz-progress-fill" id="progress-fill"></span></span>
+      </p>
+      <h2 class="quiz-question" id="question-text"></h2>
+      <div class="quiz-options" id="question-options"></div>
+      <div class="quiz-nav-row">
+        <button type="button" class="quiz-back" id="btn-back">&larr; Back</button>
+        <button type="button" class="btn-quiz-primary" id="btn-next" disabled>Next</button>
+      </div>
+    </section>
+
+    <!-- RESULT SCREEN -->
+    <section class="quiz-screen" id="screen-result">
+      <p class="result-eyebrow">Your Makeup Volume</p>
+      <p class="result-number" id="result-number"></p>
+      <p class="result-name" id="result-name"></p>
+      <div class="result-divider"></div>
+      <div class="result-copy" id="result-copy"></div>
+      <div class="result-booking-note">
+        <p id="result-booking-line"></p>
+      </div>
+      <div class="result-actions">
+        <a href="index.html#booking" class="btn-result-primary">Book Blend Studio</a>
+        <button type="button" class="btn-result-ghost" id="btn-retake">Take the Quiz Again</button>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <p class="footer-logo">Blend<span>.</span>Studio</p>
+  <p class="footer-tagline">Bridal makeup artistry rooted in classic technique and modern beauty. South Shore, Massachusetts.</p>
+</footer>
+
+<script>
+(function () {
+  var questions = [
+    {
+      text: "When you get ready for a special event, what's most like you?",
+      options: [
+        { letter: "A", text: "I barely wear more than I normally do.", score: 1 },
+        { letter: "B", text: "I add enough to look polished and put together.", score: 2 },
+        { letter: "C", text: "I definitely step up my makeup for an event.", score: 3 },
+        { letter: "D", text: "If I'm getting dressed up, I want the makeup to be part of the look.", score: 4 }
+      ]
+    },
+    {
+      text: "When you look at inspiration photos, what usually catches your eye first?",
+      options: [
+        { letter: "A", text: "Beautiful skin that barely looks like makeup.", score: 1 },
+        { letter: "B", text: "The whole look feels polished, but nothing really stands out.", score: 2 },
+        { letter: "C", text: "Defined eyes, lashes, or a little more structure in the face.", score: 3 },
+        { letter: "D", text: "A makeup look with impact — something you can clearly see and appreciate.", score: 4 }
+      ]
+    },
+    {
+      text: "How do you feel about seeing your skin through your makeup?",
+      options: [
+        { letter: "A", text: "I want to see as much of my natural skin as possible.", score: 1 },
+        { letter: "B", text: "I like some coverage, but I still want my skin to look like skin.", score: 2 },
+        { letter: "C", text: "I prefer a more perfected, even complexion.", score: 3 },
+        { letter: "D", text: "I like a very finished complexion and I'm comfortable with fuller coverage.", score: 4 }
+      ]
+    },
+    {
+      text: "How do you feel about eye makeup?",
+      options: [
+        { letter: "A", text: "Keep it very minimal — mascara and a little definition is plenty.", score: 1 },
+        { letter: "B", text: "I like softly defined eyes, but I don't want them to take over.", score: 2 },
+        { letter: "C", text: "I like noticeable definition, lashes, and some depth around the eyes.", score: 3 },
+        { letter: "D", text: "I love a stronger eye and I'm comfortable with it being a focal point.", score: 4 }
+      ]
+    },
+    {
+      text: "Someone compliments your makeup at an event. Which reaction sounds most like you?",
+      options: [
+        { letter: "A", text: "I'd rather hear, \u201cYour skin looks amazing\u201d than \u201cI love your makeup.\u201d", score: 1 },
+        { letter: "B", text: "I'm happy if they notice I look especially polished.", score: 2 },
+        { letter: "C", text: "I like when someone notices my eyes, lashes, or the makeup itself.", score: 3 },
+        { letter: "D", text: "I love a makeup compliment — I put it on to be seen.", score: 4 }
+      ]
+    },
+    {
+      text: "You look in the mirror when your makeup is finished. What makes you happiest?",
+      options: [
+        { letter: "A", text: "I almost forget I'm wearing makeup.", score: 1 },
+        { letter: "B", text: "I look like myself — just more polished.", score: 2 },
+        { letter: "C", text: "I look like myself, but noticeably more done.", score: 3 },
+        { letter: "D", text: "I look transformed for the occasion, and I love it.", score: 4 }
+      ]
+    }
+  ];
+
+  var results = {
+    1: {
+      name: "Bare",
+      paragraphs: [
+        "You want makeup to feel almost invisible.",
+        "You\u2019re most comfortable when your skin still looks completely like your skin, your eyes are softly defined, and nothing feels overly \u201cdone.\u201d You\u2019re not looking for makeup to transform you\u2014you want it to quietly support what\u2019s already there.",
+        "For you, the details matter more than the amount. Strategic coverage, subtle definition, natural texture and a very light hand can make a big difference without making you feel like you\u2019re wearing a lot of makeup."
+      ]
+    },
+    2: {
+      name: "Polished",
+      paragraphs: [
+        "You want people to notice you, not your makeup.",
+        "You like a finished, pulled-together look with beautiful skin, softly defined eyes and just enough color and structure to photograph beautifully. You\u2019re comfortable wearing makeup\u2014you just don\u2019t want any one part of it taking over.",
+        "For you, balance is everything. The makeup can be there without carrying too much visual weight."
+      ]
+    },
+    3: {
+      name: "Defined",
+      paragraphs: [
+        "You like your makeup to show up, while still looking like you.",
+        "You\u2019re comfortable with more definition around the eyes, noticeable lashes, a more perfected complexion and added structure and color. You want to look unmistakably finished, but you still want everything to feel balanced rather than overdone.",
+        "For you, definition is the goal\u2014not heaviness. Makeup can have presence without overwhelming your features."
+      ]
+    },
+    4: {
+      name: "Statement",
+      paragraphs: [
+        "You\u2019re comfortable letting the makeup be part of the look.",
+        "You enjoy stronger definition, more noticeable lashes, a perfected complexion and makeup with enough presence to make an impact. For you, getting dressed up is an opportunity to turn things up\u2014and you don\u2019t mind when people notice the makeup.",
+        "For you, more doesn\u2019t have to mean too much. The goal is still balance, placement and intention\u2014just at a higher volume."
+      ]
+    }
+  };
+
+  var current = 0;
+  var answers = new Array(questions.length).fill(null);
+
+  var screenIntro = document.getElementById('screen-intro');
+  var screenQuiz = document.getElementById('screen-quiz');
+  var screenResult = document.getElementById('screen-result');
+
+  var progressText = document.getElementById('progress-text');
+  var progressFill = document.getElementById('progress-fill');
+  var questionText = document.getElementById('question-text');
+  var questionOptions = document.getElementById('question-options');
+  var btnBack = document.getElementById('btn-back');
+  var btnNext = document.getElementById('btn-next');
+
+  function pad(n) { return n < 10 ? '0' + n : '' + n; }
+
+  function showScreen(el) {
+    [screenIntro, screenQuiz, screenResult].forEach(function (s) { s.classList.remove('active'); });
+    el.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function renderQuestion() {
+    var q = questions[current];
+    progressText.textContent = pad(current + 1) + ' / ' + pad(questions.length);
+    progressFill.style.width = (((current + 1) / questions.length) * 100) + '%';
+    questionText.textContent = q.text;
+    questionOptions.innerHTML = '';
+
+    q.options.forEach(function (opt) {
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'quiz-option';
+      if (answers[current] === opt.score) btn.classList.add('selected');
+      btn.innerHTML = '<span class="opt-letter">' + opt.letter + '</span><span>' + opt.text + '</span>';
+      btn.addEventListener('click', function () {
+        answers[current] = opt.score;
+        renderQuestion();
+      });
+      questionOptions.appendChild(btn);
+    });
+
+    btnBack.classList.toggle('hidden', current === 0);
+    btnNext.disabled = answers[current] === null;
+    btnNext.textContent = current === questions.length - 1 ? 'See My Result' : 'Next';
+  }
+
+  function calculateResult() {
+    var total = answers.reduce(function (sum, val) { return sum + val; }, 0);
+    var volume;
+    if (total <= 9) volume = 1;
+    else if (total <= 14) volume = 2;
+    else if (total <= 19) volume = 3;
+    else volume = 4;
+    return volume;
+  }
+
+  function renderResult() {
+    var volume = calculateResult();
+    var r = results[volume];
+    document.getElementById('result-number').textContent = volume;
+    document.getElementById('result-name').textContent = r.name;
+    document.getElementById('result-copy').innerHTML = r.paragraphs.map(function (p) {
+      return '<p>' + p + '</p>';
+    }).join('');
+    document.getElementById('result-booking-line').innerHTML =
+      'Booking with Blend Studio? Tell me you\u2019re a <strong>Volume ' + volume + '</strong>. It gives me a great starting point\u2014and we\u2019ll fine-tune everything together from there.';
+    showScreen(screenResult);
+  }
+
+  document.getElementById('btn-start').addEventListener('click', function () {
+    current = 0;
+    renderQuestion();
+    showScreen(screenQuiz);
+  });
+
+  btnNext.addEventListener('click', function () {
+    if (answers[current] === null) return;
+    if (current === questions.length - 1) {
+      renderResult();
+    } else {
+      current += 1;
+      renderQuestion();
+    }
+  });
+
+  btnBack.addEventListener('click', function () {
+    if (current === 0) return;
+    current -= 1;
+    renderQuestion();
+  });
+
+  document.getElementById('btn-retake').addEventListener('click', function () {
+    current = 0;
+    answers = new Array(questions.length).fill(null);
+    renderQuestion();
+    showScreen(screenQuiz);
+  });
+})();
+</script>
+
+</body>
+</html>
