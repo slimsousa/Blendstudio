@@ -6,7 +6,7 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZP8SBN6QPL"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag() {dataLayer.push(arguments);]
+    function gtag() {dataLayer.push(arguments);}
                      gtag('js', new Date());
                      gtag('config', 'G-ZP8SBN6QPL');
   </script>
@@ -170,23 +170,26 @@
     .skincare-category:first-of-type { margin-top: 0; }
     .category-label { font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.9rem; }
     .category-divider { width: 2.25rem; height: 1px; background: var(--gold-light); margin-bottom: 2.5rem; }
-    .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.25rem; }
-    .product-card { display: flex; flex-direction: column; background: white; box-shadow: 0 4px 30px rgba(42,38,34,0.05); }
-    .product-img-wrap { aspect-ratio: 1/1; overflow: hidden; background: var(--cream); display: flex; align-items: center; justify-content: center; position: relative; padding: 1.6rem; }
+    .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; }
+    .product-card { display: flex; flex-direction: column; background: white; box-shadow: 0 2px 16px rgba(42,38,34,0.05); max-width: 300px; margin: 0 auto; width: 100%; }
+    .product-img-wrap { aspect-ratio: 1/1; max-width: 108px; margin: 0 auto; overflow: hidden; background: var(--cream); display: flex; align-items: center; justify-content: center; position: relative; padding: 0.7rem; }
     .product-img-wrap img { width: 100%; height: 100%; object-fit: contain; object-position: center; display: block; }
-    .product-body { padding: 1.75rem 1.75rem 2rem; display: flex; flex-direction: column; flex: 1; }
-    .product-name { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 400; margin-bottom: 0.6rem; line-height: 1.25; }
-    .product-what { font-size: 0.84rem; color: var(--muted); font-style: italic; margin-bottom: 1.1rem; line-height: 1.6; }
-    .product-why { font-size: 0.88rem; color: var(--charcoal); line-height: 1.8; margin-bottom: 1.2rem; }
-    .product-note { font-size: 0.8rem; color: var(--muted); line-height: 1.7; padding-top: 1rem; margin-bottom: 1.4rem; border-top: 1px solid var(--border); }
+    .product-body { padding: 1rem 1.15rem 1.3rem; display: flex; flex-direction: column; flex: 1; }
+    .product-name { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 400; margin-bottom: 0.45rem; line-height: 1.25; text-align: center; }
+    .product-what { font-size: 0.76rem; color: var(--muted); font-style: italic; margin-bottom: 0.7rem; line-height: 1.55; }
+    .product-why { font-size: 0.8rem; color: var(--charcoal); line-height: 1.65; margin-bottom: 0.85rem; }
+    .product-note { font-size: 0.72rem; color: var(--muted); line-height: 1.55; padding-top: 0.7rem; margin-bottom: 0.9rem; border-top: 1px solid var(--border); }
     .product-note strong { color: var(--gold); font-weight: 500; letter-spacing: 0.03em; font-style: normal; }
-    .product-shades { display: flex; gap: 0.5rem; margin-bottom: 1.4rem; flex-wrap: wrap; align-items: center; }
-    .product-shade { width: 1.5rem; height: 1.5rem; border-radius: 50%; border: 1px solid var(--border); display: inline-block; }
-    .product-shade-label { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-right: 0.3rem; }
-    .product-cta-row { margin-top: auto; display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; padding-top: 0.5rem; }
-    .shop-btn { font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; padding: 0.6rem 1.3rem; border: 1px solid var(--gold); color: var(--gold); text-decoration: none; transition: all 0.3s; white-space: nowrap; }
+    .product-shades { display: flex; gap: 0.4rem; margin-bottom: 0.9rem; flex-wrap: wrap; align-items: center; }
+    .product-shade { width: 1.15rem; height: 1.15rem; border-radius: 50%; border: 1px solid var(--border); display: inline-block; }
+    .product-shade-label { font-size: 0.64rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-right: 0.3rem; }
+    .product-cta-row { margin-top: auto; display: flex; align-items: center; justify-content: center; gap: 0.6rem; flex-wrap: wrap; padding-top: 0.4rem; }
+    .shop-btn { font-size: 0.64rem; letter-spacing: 0.13em; text-transform: uppercase; padding: 0.45rem 1rem; border: 1px solid var(--gold); color: var(--gold); text-decoration: none; transition: all 0.3s; white-space: nowrap; }
     .shop-btn:hover { background: var(--gold); color: white; }
-    .paid-link-note { font-size: 0.66rem; color: var(--muted); letter-spacing: 0.05em; font-style: italic; }
+    .paid-link-note { font-size: 0.6rem; color: var(--muted); letter-spacing: 0.05em; font-style: italic; }
+
+    /* A FEW THINGS BEFORE "I DO" — reuses the product-card system above, with a flexible grid that steps down naturally on small screens */
+    .ftido-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.1rem; max-width: 900px; }
 
     @media (max-width: 900px) {
       nav { padding: 1.2rem 2rem; }
@@ -200,6 +203,8 @@
       .mywork-grid { grid-template-columns: repeat(2, 1fr); }
       .mywork-item.featured { grid-column: span 2; aspect-ratio: 4/3; }
       .product-grid { grid-template-columns: 1fr; }
+      .product-card { max-width: 240px; }
+      .ftido-grid { grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); max-width: 100%; }
       footer { grid-template-columns: 1fr; gap: 2rem; padding: 3rem 2rem; }
       .footer-bottom { padding: 1rem 2rem; }
       .about-accent-box { display: none; }
@@ -917,6 +922,94 @@
         </div>
       </div>
     </div>
+
+    <div class="skincare-category">
+      <p class="category-label">A FEW THINGS BEFORE &ldquo;I DO&rdquo;</p>
+      <div class="category-divider"></div>
+      <div style="max-width:62ch;margin-bottom:2rem;">
+        <p style="font-size:1rem;line-height:1.9;color:var(--muted);margin:0;">A few useful extras for the days leading up to your wedding&mdash;and a few worth tossing in your bag for the day itself.</p>
+      </div>
+      <div class="product-grid ftido-grid">
+        <div class="product-card">
+          <div class="product-img-wrap">
+            <img src="images/products/shiseido-eye-masks.png" alt="Shiseido Eye Masks" loading="lazy">
+          </div>
+          <div class="product-body">
+            <h3 class="product-name">Shiseido Eye Masks</h3>
+            <p class="product-why">One of my favorites for giving the eye area a little extra attention. They&rsquo;re great for softening the look of fine lines and leaving the skin around the eyes looking smoother and refreshed.</p>
+            <div class="product-cta-row">
+              <a href="https://amzn.to/4cPZwYL" class="shop-btn" target="_blank" rel="nofollow sponsored noopener">Shop Product →</a>
+              <span class="paid-link-note">(paid link)</span>
+            </div>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-img-wrap">
+            <img src="images/products/lumineux-whitening-strips.png" alt="Lumineux Whitening Strips" loading="lazy">
+          </div>
+          <div class="product-body">
+            <h3 class="product-name">Lumineux Whitening Strips</h3>
+            <p class="product-why">One of those things worth starting before the wedding instead of thinking about the night before. A brighter smile never hurts when there are going to be a few thousand photos.</p>
+            <div class="product-cta-row">
+              <a href="https://amzn.to/4gDT0GL" class="shop-btn" target="_blank" rel="nofollow sponsored noopener">Shop Product →</a>
+              <span class="paid-link-note">(paid link)</span>
+            </div>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-img-wrap">
+            <img src="images/products/saltyface-tanning-water.png" alt="Saltyface Tanning Water" loading="lazy">
+          </div>
+          <div class="product-body">
+            <h3 class="product-name">Saltyface Tanning Water</h3>
+            <p class="product-why">If you want a little color, I&rsquo;d much rather you build it gradually than show up the morning of the wedding with a last-minute self-tan experiment.</p>
+            <div class="product-cta-row">
+              <a href="https://amzn.to/4xfGJwZ" class="shop-btn" target="_blank" rel="nofollow sponsored noopener">Shop Product →</a>
+              <span class="paid-link-note">(paid link)</span>
+            </div>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-img-wrap">
+            <img src="images/products/travalo-perfume-atomizer.png" alt="Travalo Perfume Atomizer" loading="lazy">
+          </div>
+          <div class="product-body">
+            <h3 class="product-name">Travalo Perfume Atomizer</h3>
+            <p class="product-why">Fill it with the fragrance you&rsquo;re wearing for the wedding and throw it in your bag. No need to carry the entire bottle around all day.</p>
+            <div class="product-cta-row">
+              <a href="https://amzn.to/4yrMcC8" class="shop-btn" target="_blank" rel="nofollow sponsored noopener">Shop Product →</a>
+              <span class="paid-link-note">(paid link)</span>
+            </div>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-img-wrap">
+            <img src="images/products/nectar-hydration-packets.png" alt="Nectar Hydration Packets" loading="lazy">
+          </div>
+          <div class="product-body">
+            <h3 class="product-name">Nectar Hydration Packets</h3>
+            <p class="product-why">Wedding mornings are long, busy and surprisingly easy to forget to drink anything. Keep a couple of these nearby and actually hydrate.</p>
+            <div class="product-cta-row">
+              <a href="https://amzn.to/4xGStd9" class="shop-btn" target="_blank" rel="nofollow sponsored noopener">Shop Product →</a>
+              <span class="paid-link-note">(paid link)</span>
+            </div>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-img-wrap">
+            <img src="images/products/pore-root-breath-mist.png" alt="Pore & Root Breath Mist" loading="lazy">
+          </div>
+          <div class="product-body">
+            <h3 class="product-name">Pore &amp; Root Breath Mist</h3>
+            <p class="product-why">Tiny, easy to carry and exactly the kind of thing you&rsquo;ll be happy you remembered five minutes before walking down the aisle.</p>
+            <div class="product-cta-row">
+              <a href="https://amzn.to/4illG8N" class="shop-btn" target="_blank" rel="nofollow sponsored noopener">Shop Product →</a>
+              <span class="paid-link-note">(paid link)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 </section>
 
 <section id="process">
@@ -1009,4 +1102,8 @@
 
 <footer>
   <div><p class="footer-logo">Blend<span>.</span>Studio</p><p class="footer-tagline">Bridal makeup artistry rooted in classic technique and modern beauty. South Shore, Massachusetts.</p></div>
-  <div><p class="footer-col-title">Navigate</p><ul class="footer-links"><li><a href="#about">About</a></li><li><a href="#expect">What to Expect</a></li><li><a href="#beforeafter">Before &amp; After</a></li><li><a href="#expect">What to Expect</a></li><li><a href="#beforeafter">Before &amp; After</a></li><li><a href="#mywork">My Work</a></li><li><a href="#services">Services & Pricing</a></li><li><a href="#process">The Experience</a></li><li><a href="#te
+  <div><p class="footer-col-title">Navigate</p><ul class="footer-links"><li><a href="#about">About</a></li><li><a href="#expect">What to Expect</a></li><li><a href="#beforeafter">Before &amp; After</a></li><li><a href="#expect">What to Expect</a></li><li><a href="#beforeafter">Before &amp; After</a></li><li><a href="#mywork">My Work</a></li><li><a href="#services">Services & Pricing</a></li><li><a href="#process">The Experience</a></li></ul></div>
+</footer>
+<div class="footer-bottom">&copy; Blend Studio. All rights reserved.</div>
+</body>
+</html>
