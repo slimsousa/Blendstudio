@@ -71,30 +71,29 @@
     .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; font-weight: 300; color: var(--charcoal); line-height: 1; }
     .stat-label { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-top: 0.3rem; }
 
-    /* MY WORK / PORTFOLIO GRID */
-    #mywork { background: var(--warm-white); }
-    .mywork-header { max-width: 55ch; margin-bottom: 3rem; }
-    .mywork-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0.75rem;
+    /* PORTFOLIO — editorial masonry gallery */
+    #portfolio { background: var(--warm-white); }
+    .portfolio-header { max-width: 55ch; margin-bottom: 3rem; }
+    .portfolio-masonry {
+      column-count: 4;
+      column-gap: 0.85rem;
     }
-    .mywork-item {
-      overflow: hidden;
-      aspect-ratio: 4/5;
-      position: relative;
+    .portfolio-item {
+      break-inside: avoid;
+      -webkit-column-break-inside: avoid;
+      margin-bottom: 0.85rem;
     }
-    .mywork-item img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      object-position: center 20%;
+    .portfolio-item img {
       display: block;
-      transition: transform 0.6s ease;
+      width: 100%;
+      height: auto;
     }
-    .mywork-item:hover img { transform: scale(1.06); }
-    .mywork-item.featured {
-      grid-column: span 1;
-      aspect-ratio: 4/5;
+    @media (max-width: 1100px) {
+      .portfolio-masonry { column-count: 3; }
+    }
+    @media (max-width: 640px) {
+      .portfolio-masonry { column-count: 2; column-gap: 0.6rem; }
+      .portfolio-item { margin-bottom: 0.6rem; }
     }
 
     /* SERVICES */
@@ -200,8 +199,6 @@
       .services-grid { grid-template-columns: 1fr; }
       .service-card { border-right: none; border-bottom: 1px solid var(--border); }
       .process-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
-      .mywork-grid { grid-template-columns: repeat(2, 1fr); }
-      .mywork-item.featured { grid-column: span 2; aspect-ratio: 4/3; }
       .product-grid { grid-template-columns: 1fr; }
       .product-card { max-width: 240px; }
       .ftido-grid { grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); max-width: 100%; }
@@ -218,8 +215,7 @@
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#expect">What to Expect</a></li>
-    <li><a href="#beforeafter">Before &amp; After</a></li>
-    <li><a href="#mywork">My Work</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="#skincare">Skincare Guide</a></li>
     <li><a href="#process">Experience</a></li>
@@ -237,7 +233,7 @@
     <p class="hero-sub">Classic technique meets modern artistry. Timeless looks crafted for the bride who wants to feel effortlessly, authentically herself.</p>
     <div class="hero-actions">
       <a href="#booking" class="btn-primary">Inquire About Your Date</a>
-      <a href="#mywork" class="btn-ghost-light">View My Work</a>
+      <a href="#portfolio" class="btn-ghost-light">View Portfolio</a>
     </div><!-- As Seen On Badges -->
 <div style="display:flex;justify-content:center;align-items:center;gap:1.5rem;margin-top:2rem;flex-wrap:wrap;">
   <a target="_blank" href="https://www.theknot.com/marketplace/redirect-2104019?utm_source=vendor_website&utm_medium=banner&utm_term=cf7e18ff-8d1b-4f34-b583-a6c11e9c8179&utm_campaign=vendor_badge_assets"><img alt="As Seen on The Knot" border="0" src="https://d13ns7kbjmbjip.cloudfront.net/For_Your_Website/TK-badge_AsSeen.png" width="130"></a>
@@ -246,6 +242,7 @@
     <img alt="As Seen on Provincetown Weddings" src="/IMG_0187.png" style="width:60px;" />
     <span style="color:rgba(247,243,238,0.7);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;">As Seen on Provincetown Weddings</span>
   </a>
+  <a target="_blank" href="https://www.stylemepretty.com/vendor-profile/blend-studio-2?utm_source=badges&utm_campaign=profilemembers&utm_medium=website"><img src="https://sharp2.stylemepretty.com/uploads/frontend/components/assets/profile-badge$!300x.png" alt="Style Me Pretty Profile Badge" style="width:100px;height:auto;" /></a>
 </div>
 
   </div>
@@ -358,183 +355,44 @@
   <div class="hero-scroll"><div class="hero-scroll-line"></div><span>Scroll</span></div>
 </section>
 
-<!-- BEFORE & AFTER -->
-<!-- BEFORE & AFTER -->
-<section id="beforeafter" style="background: var(--cream); padding: 7rem 6rem;">
-  <div style="max-width: 55ch; margin-bottom: 3rem;">
-    <p class="section-eyebrow">Before & After</p>
-    <h2 class="section-title">The <em>transformation</em><br/>speaks for itself.</h2>
+<!-- PORTFOLIO -->
+<section id="portfolio" style="background: var(--warm-white); padding: 7rem 6rem;">
+  <div class="portfolio-header">
+    <p class="section-eyebrow">Portfolio</p>
+    <h2 class="section-title">REAL PEOPLE. BEAUTIFUL MAKEUP.</h2>
     <div class="divider"></div>
-    <p style="color:var(--muted);font-size:1rem;line-height:1.8;">
-      There is nothing more rewarding than watching a client see herself in the mirror for the first time. Every face is unique — here's a look at some of the transformations I've had the honor of creating.
-    </p>
+    <p style="color:var(--muted);font-size:1rem;line-height:1.8;">Bridal and special occasion makeup by Blend Studio.</p>
   </div>
 
-  <div style="display:flex; flex-direction:column; gap:3rem;">
-
-    <!-- PAIR 1 -->
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
-      <div>
-        <p style="font-size:0.72rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem;">Before</p>
-        <div style="overflow:hidden; aspect-ratio:4/5;">
-          <img src="New folder/before and after/ba-01-before.jpeg" alt="Before bridal makeup" style="width:100%;height:100%;object-fit:cover;display:block;">
-        </div>
-      </div>
-      <div>
-        <p style="font-size:0.72rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem;">After</p>
-        <div style="overflow:hidden; aspect-ratio:4/5;">
-          <img src="New folder/before and after/ba-01-after.jpeg" alt="After bridal makeup" style="width:100%;height:100%;object-fit:cover;display:block;">
-        </div>
-      </div>
-    </div>
-
-    <!-- PAIR 2 -->
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
-      <div>
-        <p style="font-size:0.72rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem;">Before</p>
-        <div style="overflow:hidden; aspect-ratio:4/5;">
-          <img src="New folder/before and after/ba-02-before.jpeg" alt="Before natural bridal makeup" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
-        </div>
-      </div>
-      <div>
-        <p style="font-size:0.72rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem;">After</p>
-        <div style="overflow:hidden; aspect-ratio:4/5;">
-          <img src="New folder/before and after/ba-02-after.jpeg" alt="After natural bridal makeup" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
-        </div>
-      </div>
-    </div>
-
-    <!-- PAIR 3 -->
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
-      <div>
-        <p style="font-size:0.72rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem;">Before</p>
-        <div style="overflow:hidden; aspect-ratio:4/5;">
-          <img src="New folder/before and after/ba-03-before.jpeg" alt="Before soft natural makeup" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
-        </div>
-      </div>
-      <div>
-        <p style="font-size:0.72rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem;">After</p>
-        <div style="overflow:hidden; aspect-ratio:4/5;">
-          <img src="New folder/before and after/ba-03-after.jpeg" alt="After soft natural makeup" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
-        </div>
-      </div>
-    </div>
-
-    <!-- PAIR 4 -->
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
-      <div>
-        <p style="font-size:0.72rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem;">Before</p>
-        <div style="overflow:hidden; aspect-ratio:4/5;">
-          <img src="New folder/before and after/ba-04-before.jpeg" alt="Before mature skin makeup" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
-        </div>
-      </div>
-      <div>
-        <p style="font-size:0.72rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem;">After</p>
-        <div style="overflow:hidden; aspect-ratio:4/5;">
-          <img src="New folder/before and after/ba-04-after.jpeg" alt="After mature skin makeup" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
-        </div>
-      </div>
-    </div>
-
-    <!-- PAIR 5 -->
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
-      <div>
-        <p style="font-size:0.72rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem;">Before</p>
-        <div style="overflow:hidden; aspect-ratio:4/5;">
-          <img src="New folder/before and after/ba-05-before.jpeg" alt="Before soft glam makeup" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
-        </div>
-      </div>
-      <div>
-        <p style="font-size:0.72rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem;">After</p>
-        <div style="overflow:hidden; aspect-ratio:4/5;">
-          <img src="New folder/before and after/ba-05-after.jpeg" alt="After soft glam makeup" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
-        </div>
-      </div>
-    </div>
-
-    <!-- PAIR 6 -->
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
-      <div>
-        <p style="font-size:0.72rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem;">Before</p>
-        <div style="overflow:hidden; aspect-ratio:4/5;">
-          <img src="New folder/before and after/ba-06-before.jpeg" alt="Before mature blonde makeup" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
-        </div>
-      </div>
-      <div>
-        <p style="font-size:0.72rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem;">After</p>
-        <div style="overflow:hidden; aspect-ratio:4/5;">
-          <img src="New folder/before and after/ba-06-after.jpeg" alt="After mature blonde makeup" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
-        </div>
-      </div>
-    </div>
-
-    <!-- PAIR 7 -->
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
-      <div>
-        <p style="font-size:0.72rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem;">Before</p>
-        <div style="overflow:hidden; aspect-ratio:4/5;">
-          <img src="New folder/before and after/ba-07-before.jpeg" alt="Before mature brunette makeup" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
-        </div>
-      </div>
-      <div>
-        <p style="font-size:0.72rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem;">After</p>
-        <div style="overflow:hidden; aspect-ratio:4/5;">
-          <img src="New folder/before and after/ba-07-after.jpeg" alt="After mature brunette makeup" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
-        </div>
-      </div>
-    </div>
-
-    <!-- PAIR 8 -->
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
-      <div>
-        <p style="font-size:0.72rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem;">Before</p>
-        <div style="overflow:hidden; aspect-ratio:4/5;">
-          <img src="New folder/before and after/ba-08-before.jpeg" alt="Before polished natural makeup" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
-        </div>
-      </div>
-      <div>
-        <p style="font-size:0.72rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem;">After</p>
-        <div style="overflow:hidden; aspect-ratio:4/5;">
-          <img src="New folder/before and after/ba-08-after.jpeg" alt="After polished natural makeup" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
-        </div>
-      </div>
-    </div>
-
+  <div class="portfolio-masonry">
+    <div class="portfolio-item"><img src="images/portfolio/portfolio-01.jpeg" alt="Blend Studio bridal makeup" loading="lazy"></div>
+    <div class="portfolio-item"><img src="images/portfolio/portfolio-02.jpeg" alt="Blend Studio bridal makeup" loading="lazy"></div>
+    <div class="portfolio-item"><img src="images/portfolio/portfolio-03.jpeg" alt="Blend Studio bridal makeup" loading="lazy"></div>
+    <div class="portfolio-item"><img src="images/portfolio/portfolio-04.jpeg" alt="Blend Studio bridal makeup" loading="lazy"></div>
+    <div class="portfolio-item"><img src="images/portfolio/portfolio-05.jpeg" alt="Blend Studio bridal makeup" loading="lazy"></div>
+    <div class="portfolio-item"><img src="images/portfolio/portfolio-06.jpeg" alt="Blend Studio bridal makeup" loading="lazy"></div>
+    <div class="portfolio-item"><img src="images/portfolio/portfolio-07.jpeg" alt="Blend Studio bridal makeup" loading="lazy"></div>
+    <div class="portfolio-item"><img src="images/portfolio/portfolio-08.jpeg" alt="Blend Studio bridal makeup" loading="lazy"></div>
+    <div class="portfolio-item"><img src="images/portfolio/portfolio-09.jpeg" alt="Blend Studio bridal makeup" loading="lazy"></div>
+    <div class="portfolio-item"><img src="images/portfolio/portfolio-10.jpeg" alt="Blend Studio bridal makeup" loading="lazy"></div>
+    <div class="portfolio-item"><img src="images/portfolio/portfolio-11.jpeg" alt="Blend Studio bridal makeup" loading="lazy"></div>
+    <div class="portfolio-item"><img src="images/portfolio/portfolio-12.jpeg" alt="Blend Studio bridal makeup" loading="lazy"></div>
+    <div class="portfolio-item"><img src="images/portfolio/portfolio-13.jpeg" alt="Blend Studio bridal makeup" loading="lazy"></div>
+    <div class="portfolio-item"><img src="images/portfolio/portfolio-14.jpeg" alt="Blend Studio bridal makeup" loading="lazy"></div>
+    <div class="portfolio-item"><img src="images/portfolio/portfolio-15.jpeg" alt="Blend Studio bridal makeup" loading="lazy"></div>
+    <div class="portfolio-item"><img src="images/portfolio/portfolio-16.jpeg" alt="Blend Studio bridal makeup" loading="lazy"></div>
+    <div class="portfolio-item"><img src="images/portfolio/portfolio-17.jpeg" alt="Blend Studio bridal makeup" loading="lazy"></div>
+    <div class="portfolio-item"><img src="images/portfolio/portfolio-18.jpeg" alt="Blend Studio bridal makeup" loading="lazy"></div>
+    <div class="portfolio-item"><img src="images/portfolio/portfolio-19.jpeg" alt="Blend Studio bridal makeup" loading="lazy"></div>
+    <div class="portfolio-item"><img src="images/portfolio/portfolio-20.jpeg" alt="Blend Studio bridal makeup" loading="lazy"></div>
+    <div class="portfolio-item"><img src="images/portfolio/portfolio-21.png" alt="Blend Studio bridal makeup" loading="lazy"></div>
+    <div class="portfolio-item"><img src="images/portfolio/portfolio-22.jpeg" alt="Blend Studio bridal makeup" loading="lazy"></div>
+    <div class="portfolio-item"><img src="images/portfolio/portfolio-23.jpeg" alt="Blend Studio bridal makeup" loading="lazy"></div>
+    <div class="portfolio-item"><img src="images/portfolio/portfolio-24.jpeg" alt="Blend Studio bridal makeup" loading="lazy"></div>
+    <div class="portfolio-item"><img src="images/portfolio/portfolio-25.jpeg" alt="Blend Studio bridal makeup" loading="lazy"></div>
+    <div class="portfolio-item"><img src="images/portfolio/portfolio-26.jpeg" alt="Blend Studio bridal makeup" loading="lazy"></div>
+    <div class="portfolio-item"><img src="images/portfolio/portfolio-27.jpeg" alt="Blend Studio bridal makeup" loading="lazy"></div>
   </div>
-   
-  
-</section>
-
-<!-- MY WORK -->
-<section id="mywork" style="background: var(--warm-white); padding: 7rem 6rem;">
-  <div class="mywork-header">
-    <p class="section-eyebrow">My Work</p>
-    <h2 class="section-title">
-      brides.<br/>Real <em>artistry.</em></h2>
-    <div class="divider"></div>
-    <p style="color:var(--muted);font-size:1rem;line-height:1.8;">Every look is uniquely tailored — from soft and natural to bold and glamorous. Here's a glimpse at some of the wedding makeup applications I've had the honor of creating.</p>
-  </div>
-  
-<div class="mywork-grid">
-  <div class="mywork-item"><img src="01.jpeg" alt="Blend Studio bridal makeup"></div>
-  <div class="mywork-item"><img src="03.jpeg" alt="Blend Studio bridal makeup"></div>
-  <div class="mywork-item"><img src="05.jpeg" alt="Blend Studio bridal makeup"></div>
-  <div class="mywork-item"><img src="06.jpeg" alt="Blend Studio bridal makeup"></div>
-  <div class="mywork-item"><img src="07.jpeg" alt="Blend Studio bridal makeup"></div>
-  <div class="mywork-item"><img src="08.jpeg" alt="Blend Studio bridal makeup"></div>
-  <div class="mywork-item"><img src="09.jpeg" alt="Blend Studio bridal makeup"></div>
-  <div class="mywork-item"><img src="10.jpeg" alt="Blend Studio bridal makeup"></div>
-  <div class="mywork-item"><img src="11.jpeg" alt="Blend Studio bridal makeup"></div>
-  <div class="mywork-item"><img src="12.jpeg" alt="Blend Studio bridal makeup"></div>
-  <div class="mywork-item"><img src="13.jpeg" alt="Blend Studio bridal makeup"></div>
-  <div class="mywork-item"><img src="14.jpeg" alt="Blend Studio bridal makeup"></div>
-  <div class="mywork-item"><img src="15.jpeg" alt="Blend Studio bridal makeup"></div>
-  <div class="mywork-item"><img src="16.jpeg" alt="Blend Studio bridal makeup"></div>
-  <div class="mywork-item"><img src="17.jpeg" alt="Blend Studio bridal makeup"></div>
-  <div class="mywork-item"><img src="18.jpeg" alt="Blend Studio bridal makeup"></div>
-  <div class="mywork-item"><img src="19.jpeg" alt="Blend Studio bridal makeup"></div>
-  <div class="mywork-item"><img src="bridesmaids - Copy.jpeg" alt="Blend Studio bridal makeup"></div>
-</div>
 
 </section>
 
@@ -1102,7 +960,7 @@
 
 <footer>
   <div><p class="footer-logo">Blend<span>.</span>Studio</p><p class="footer-tagline">Bridal makeup artistry rooted in classic technique and modern beauty. South Shore, Massachusetts.</p></div>
-  <div><p class="footer-col-title">Navigate</p><ul class="footer-links"><li><a href="#about">About</a></li><li><a href="#expect">What to Expect</a></li><li><a href="#beforeafter">Before &amp; After</a></li><li><a href="#expect">What to Expect</a></li><li><a href="#beforeafter">Before &amp; After</a></li><li><a href="#mywork">My Work</a></li><li><a href="#services">Services & Pricing</a></li><li><a href="#process">The Experience</a></li></ul></div>
+  <div><p class="footer-col-title">Navigate</p><ul class="footer-links"><li><a href="#about">About</a></li><li><a href="#expect">What to Expect</a></li><li><a href="#expect">What to Expect</a></li><li><a href="#portfolio">Portfolio</a></li><li><a href="#services">Services & Pricing</a></li><li><a href="#process">The Experience</a></li></ul></div>
 </footer>
 <div class="footer-bottom">&copy; Blend Studio. All rights reserved.</div>
 </body>
