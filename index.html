@@ -363,35 +363,56 @@
      ============================================================ -->
 
 <section id="about" style="padding:0; position:relative; min-height:90vh; display:flex; align-items:stretch;">
+  <style>
+    /* About / bio — scoped to this section */
+    #about .about-bio-img { width:100%; height:100%; object-fit:cover; object-position:center top; display:block; filter:brightness(0.45); }
+    #about .about-bio-overlay { position:absolute; inset:0; background:linear-gradient(to right, rgba(42,38,34,0.93) 0%, rgba(42,38,34,0.82) 38%, rgba(42,38,34,0.5) 64%, rgba(42,38,34,0.1) 100%); }
+    #about .about-bio-content { position:relative; z-index:2; display:grid; grid-template-columns:1fr; width:100%; max-width:800px; padding:8rem 6rem 7rem; align-items:center; }
+    #about .about-bio-intro { font-family:'Jost', sans-serif; font-size:1.375rem; font-weight:400; line-height:1.5; color:#F5F0E8; margin:0 0 1.5rem; text-align:left; }
+    #about .about-bio-text { font-family:'Jost', sans-serif; font-size:1.125rem; font-weight:400; line-height:1.6; color:#F5F0E8; margin:0 0 1.4rem; text-align:left; }
+    #about .about-bio-text:last-of-type { margin-bottom:0; }
+    #about .about-bio-stats { display:flex; flex-wrap:wrap; gap:1.5rem 3rem; margin-top:2.5rem; padding-top:2.5rem; border-top:1px solid rgba(184,154,110,0.4); }
+    @media (max-width: 900px) {
+      #about .about-bio-content { padding:7rem 3rem 4rem; max-width:none; }
+      #about .about-bio-img { object-position:70% top; }
+    }
+    @media (max-width: 640px) {
+      #about .about-bio-overlay { background:linear-gradient(to bottom, rgba(42,38,34,0.6) 0%, rgba(42,38,34,0.88) 30%, rgba(42,38,34,0.92) 100%); }
+      #about .about-bio-content { padding:6rem 1.5rem 3.5rem; }
+      #about .about-bio-intro { font-size:1.25rem; }
+      #about .about-bio-text { font-size:1rem; }
+      #about .about-bio-stats { flex-wrap:nowrap; gap:1.25rem; margin-top:2rem; padding-top:2rem; }
+      #about .about-bio-stats .stat-num { font-size:2.2rem; }
+      #about .about-bio-stats .stat-label { font-size:0.64rem; letter-spacing:0.1em; }
+    }
+  </style>
 
   <!-- Full background image -->
   <div style="position:absolute; inset:0; overflow:hidden;">
-    <img src="hero.jpeg" style="width:100%; height:100%; object-fit:cover; object-position:center top; display:block; filter:brightness(0.45);" alt="Chris - Blend Studio" />
+    <img class="about-bio-img" src="hero.jpeg" alt="Chris - Blend Studio" />
   </div>
 
-  <!-- Dark gradient overlay for readability -->
-  <div style="position:absolute; inset:0; background:linear-gradient(to right, rgba(42,38,34,0.85) 0%, rgba(42,38,34,0.6) 50%, rgba(42,38,34,0.2) 100%);"></div>
+  <!-- Dark gradient overlay for readability (lighter on the right to keep the portrait visible) -->
+  <div class="about-bio-overlay"></div>
 
   <!-- Content overlay -->
-  <div style="position:relative; z-index:2; display:grid; grid-template-columns:1fr; max-width:800px; padding:7rem 6rem; align-items:center;">
+  <div class="about-bio-content">
 
     <!-- Left: Bio text -->
     <div>
       <p class="section-eyebrow">About Me</p>
       <h2 class="section-title" style="color:var(--cream);">A passion for making<br/>brides feel <em>seen</em>.</h2>
       <div class="divider"></div>
-      <p style="font-size:1rem;line-height:1.9;color:rgba(247,243,238,0.8);margin-bottom:1.2rem;">With 25 years of professional makeup artistry experience, I bring both depth of training and a genuine love for the craft to every client I work with. A graduate of the David Nicholas Makeup Academy and Dinair-certified in airbrush application, I've spent over two decades refining my technique — and honestly, I still get excited every single time a bride sees herself in the mirror.</p>
-      <p style="font-size:1rem;line-height:1.9;color:rgba(247,243,238,0.8);margin-bottom:1.2rem;">My work spans an extensive range of premium brands — Bobbi Brown, Lancôme, Chanel, NARS, Dior, M.A.C, Clinique, and Estée Lauder — giving me the knowledge to find exactly what works for <em>your</em> skin, your features, and your vision. I stay current on every new trend and technique, because I believe you should never have to choose between timeless and fresh. You deserve both.</p>
-      <p style="font-size:1rem;line-height:1.9;color:rgba(247,243,238,0.8);margin-bottom:1.2rem;">Having completed over 100 bridal looks throughout my career, I understand the trust a bride places in her makeup artist — and I don't take that lightly. My goal is simple: to make you feel like the most beautiful, confident version of yourself on the day that matters most.</p>
-      <div style="display:flex;gap:3rem;margin-top:2.5rem;padding-top:2.5rem;border-top:1px solid rgba(184,154,110,0.4);">
-        <div><p class="stat-num" style="color:var(--cream);">25+</p><p class="stat-label" style="color:rgba(247,243,238,0.6);">Years Experience</p></div>
-        <div><p class="stat-num" style="color:var(--cream);">100+</p><p class="stat-label" style="color:rgba(247,243,238,0.6);">Weddings</p></div>
+      <p class="about-bio-intro">You deserve to feel comfortable in the chair and confident in the mirror.</p>
+      <p class="about-bio-text">With nearly 30 years of professional makeup artistry and over 150 weddings, I bring a calm presence, a careful eye, and a genuine love for what I do.</p>
+      <p class="about-bio-text">A graduate of the David Nicholas Makeup Academy, my experience includes brands such as Bobbi Brown, Chanel, NARS, Dior, and M.A.C., with Temptu airbrush available. I don’t follow a bridal makeup template. Your skin, your features, and how you want to feel guide every choice, from subtle definition to full glam.</p>
+      <p class="about-bio-text">I listen closely, pay attention to the little details, and welcome your feedback along the way. Curious about what I’m using or why? I’m happy to explain and share tips you can use yourself. Prefer to relax and enjoy a quiet moment? You can do that, too. It’s your time in the chair, and I want you to feel looked after from the first conversation to the final touch up.</p>
+      <div class="about-bio-stats">
+        <div><p class="stat-num" style="color:var(--cream);">29</p><p class="stat-label" style="color:rgba(247,243,238,0.6);">Years Experience</p></div>
+        <div><p class="stat-num" style="color:var(--cream);">150+</p><p class="stat-label" style="color:rgba(247,243,238,0.6);">Weddings</p></div>
         <div><p class="stat-num" style="color:var(--cream);">5★</p><p class="stat-label" style="color:rgba(247,243,238,0.6);">Reviews</p></div>
       </div>
     </div>
-
-    <!-- Right: empty to let photo show through -->
-    <div></div>
 
   </div>
 </section>
