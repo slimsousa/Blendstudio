@@ -34,7 +34,7 @@
       --muted: #8a6f6b; --gold: #b5726a; --gold-light: #e3b2a8; --border: #ecd6cf;
       --rose-deep: #4a2c2e; --blush: #f1d9d2;
     }
-    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    html { scroll-behavior: smooth; scroll-padding-top: 150px; }
     body { font-family: 'Jost', sans-serif; background: var(--warm-white); color: var(--charcoal); font-weight: 300; overflow-x: hidden; }
     img { max-width: 100%; display: block; }
 
@@ -136,6 +136,19 @@
     .btn-outline { display: inline-block; padding: 1rem 2.2rem; border: 1px solid var(--gold-light); color: var(--gold-light); text-decoration: none; font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; transition: all 0.3s; }
     .btn-outline:hover { background: var(--gold-light); color: var(--charcoal); }
 
+
+    /* SHOP MENU (sticky category bar) */
+    .shop-menu { position: sticky; top: var(--nav-h, 86px); z-index: 90; background: rgba(252,246,243,0.96); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); border-bottom: 1px solid var(--border); padding: 0; display: block; }
+    .shop-menu ul { list-style: none; display: flex; justify-content: center; gap: 0.4rem 2rem; padding: 0.95rem 2rem; overflow-x: auto; scrollbar-width: none; white-space: nowrap; }
+    .shop-menu ul::-webkit-scrollbar { display: none; }
+    .shop-menu a { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); text-decoration: none; padding-bottom: 4px; border-bottom: 1px solid transparent; transition: color 0.3s, border-color 0.3s; }
+    .shop-menu a:hover { color: var(--charcoal); }
+    .shop-menu a.active { color: var(--gold); border-bottom-color: var(--gold-light); }
+    @media (max-width: 900px) {
+      .shop-menu ul { justify-content: flex-start; gap: 1.6rem; padding: 0.85rem 1.5rem; }
+      .shop-menu a { font-size: 0.66rem; }
+    }
+
     /* FOOTER (matches homepage) */
     footer { background: var(--rose-deep); color: rgba(247,243,238,0.5); padding: 4rem 6rem; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; border-top: 1px solid rgba(247,243,238,0.08); }
     .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--cream); letter-spacing: 0.12em; margin-bottom: 0.8rem; }
@@ -196,6 +209,22 @@
     <p><strong>A quick note:</strong> Some links on this page are affiliate links. If you buy through one, I may earn a small commission at no extra cost to you. It never affects what I recommend. I only share products I actually use or trust.</p>
   </div>
 </header>
+
+<!-- SHOP MENU -->
+<nav class="shop-menu" aria-label="Shop by category">
+  <ul>
+    <li><a href="#missha">Brands</a></li>
+    <li><a href="#skincare">Skincare</a></li>
+    <li><a href="#complexion">Complexion</a></li>
+    <li><a href="#cheeks">Cheeks</a></li>
+    <li><a href="#eyes">Eyes</a></li>
+    <li><a href="#mascara">Mascara</a></li>
+    <li><a href="#lips">Lips</a></li>
+    <li><a href="#tools">Tools</a></li>
+    <li><a href="#wedding-day">Wedding Day</a></li>
+    <li><a href="#trending">Trending</a></li>
+  </ul>
+</nav>
 
 <!-- MISSHA -->
 <section class="brand-section" id="missha">
@@ -314,7 +343,7 @@
   <div class="disclosure">
     <p><strong>As an Amazon Associate I earn from qualifying purchases.</strong></p>
   </div>
-    <div class="skincare-category">
+    <div class="skincare-category" id="skincare">
       <p class="category-eyebrow">Skincare</p>
       <h3 class="category-label">Cleanse</h3>
       <div class="category-divider"></div>
@@ -661,7 +690,7 @@
         </div>
       </div>
     </div>
-    <div class="skincare-category">
+    <div class="skincare-category" id="complexion">
       <p class="category-eyebrow">In My Kit</p>
       <h3 class="category-label">Complexion</h3>
       <div class="category-divider"></div>
@@ -813,7 +842,7 @@
         </div>
       </div>
     </div>
-    <div class="skincare-category">
+    <div class="skincare-category" id="setting-spray">
       <p class="category-eyebrow">In My Kit</p>
       <h3 class="category-label">Setting Spray</h3>
       <div class="category-divider"></div>
@@ -868,7 +897,7 @@
         </div>
       </div>
     </div>
-    <div class="skincare-category">
+    <div class="skincare-category" id="cheeks">
       <p class="category-eyebrow">In My Kit</p>
       <h3 class="category-label">Cheeks</h3>
       <div class="category-divider"></div>
@@ -987,7 +1016,7 @@
         </div>
       </div>
     </div>
-    <div class="skincare-category">
+    <div class="skincare-category" id="eyes">
       <p class="category-eyebrow">In My Kit</p>
       <h3 class="category-label">Eyes, Lashes &amp; Brows</h3>
       <div class="category-divider"></div>
@@ -1092,7 +1121,7 @@
         </div>
       </div>
     </div>
-    <div class="skincare-category">
+    <div class="skincare-category" id="mascara">
       <p class="category-eyebrow">In My Kit</p>
       <h3 class="category-label">Mascara</h3>
       <div class="category-divider"></div>
@@ -1147,7 +1176,7 @@
         </div>
       </div>
     </div>
-    <div class="skincare-category">
+    <div class="skincare-category" id="lips">
       <p class="category-eyebrow">In My Kit</p>
       <h3 class="category-label">Bridal Lips</h3>
       <div class="category-divider"></div>
@@ -1272,7 +1301,7 @@
         </div>
       </div>
     </div>
-    <div class="skincare-category">
+    <div class="skincare-category" id="tools">
       <p class="category-eyebrow">In My Kit</p>
       <h3 class="category-label">Tools</h3>
       <div class="category-divider"></div>
@@ -1321,7 +1350,7 @@
         </div>
       </div>
     </div>
-    <div class="skincare-category">
+    <div class="skincare-category" id="wedding-day">
       <p class="category-eyebrow">For the Big Day</p>
       <h3 class="category-label">Wedding Day Essentials</h3>
       <div class="category-divider"></div>
@@ -1405,7 +1434,7 @@
       </div>
     </div>
 
-    <div class="skincare-category">
+    <div class="skincare-category" id="before-i-do">
       <p class="category-eyebrow">Bridal Prep</p>
       <h3 class="category-label">A Few Things Before &ldquo;I Do&rdquo;</h3>
       <div class="category-divider"></div>
@@ -1506,7 +1535,7 @@
         </div>
       </div>
     </div>
-    <div class="skincare-category">
+    <div class="skincare-category" id="trending">
       <p class="category-eyebrow">Trending Now</p>
       <h3 class="category-label">Bride-Approved</h3>
       <div class="category-divider"></div>
@@ -1578,5 +1607,41 @@
 <a href="https://blendstudio.design/#booking" class="mobile-cta">Check Your Date</a>
 <div class="footer-bottom">&copy; Blend Studio. All rights reserved.</div>
 
+
+<script>
+  (function () {
+    var nav = document.querySelector('body > nav:not(.shop-menu)');
+    var menu = document.querySelector('.shop-menu');
+    if (!nav || !menu) return;
+    function setOffsets() {
+      var navH = nav.offsetHeight;
+      document.documentElement.style.setProperty('--nav-h', navH + 'px');
+      document.documentElement.style.scrollPaddingTop = (navH + menu.offsetHeight + 16) + 'px';
+    }
+    setOffsets();
+    window.addEventListener('resize', setOffsets);
+    var ul = menu.querySelector('ul');
+    var links = Array.prototype.slice.call(menu.querySelectorAll('a'));
+    var targets = links.map(function (a) { return document.querySelector(a.getAttribute('href')); });
+    var last = -2;
+    function onScroll() {
+      var line = nav.offsetHeight + menu.offsetHeight + 40;
+      var current = -1;
+      targets.forEach(function (t, i) { if (t && t.getBoundingClientRect().top <= line) current = i; });
+      if (current === last) return;
+      last = current;
+      links.forEach(function (a, i) { a.classList.toggle('active', i === current); });
+      if (current >= 0 && ul.scrollWidth > ul.clientWidth) {
+        var a = links[current];
+        ul.scrollTo({ left: a.offsetLeft - ul.clientWidth / 2 + a.offsetWidth / 2, behavior: 'smooth' });
+      }
+    }
+    var ticking = false;
+    window.addEventListener('scroll', function () {
+      if (!ticking) { ticking = true; requestAnimationFrame(function () { onScroll(); ticking = false; }); }
+    }, { passive: true });
+    onScroll();
+  })();
+</script>
 </body>
 </html>
