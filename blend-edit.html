@@ -138,15 +138,15 @@
 
 
     /* SHOP MENU (sticky category bar) */
-    .shop-menu { position: sticky; top: var(--nav-h, 86px); z-index: 90; background: rgba(252,246,243,0.96); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); border-bottom: 1px solid var(--border); padding: 0; display: block; }
-    .shop-menu ul { list-style: none; display: flex; justify-content: center; gap: 0.4rem 2rem; padding: 0.95rem 2rem; overflow-x: auto; scrollbar-width: none; white-space: nowrap; }
+    .shop-menu { position: sticky; top: var(--nav-h, 86px); z-index: 90; background: var(--blush); border-bottom: 1px solid var(--gold-light); box-shadow: 0 6px 18px rgba(74,44,46,0.06); display: block; padding: 0; }
+    .shop-menu ul { list-style: none; display: flex; justify-content: center; gap: 0.6rem; padding: 0.85rem 2rem; overflow-x: auto; scrollbar-width: none; white-space: nowrap; }
     .shop-menu ul::-webkit-scrollbar { display: none; }
-    .shop-menu a { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); text-decoration: none; padding-bottom: 4px; border-bottom: 1px solid transparent; transition: color 0.3s, border-color 0.3s; }
-    .shop-menu a:hover { color: var(--charcoal); }
-    .shop-menu a.active { color: var(--gold); border-bottom-color: var(--gold-light); }
+    .shop-menu a { display: inline-block; font-size: 0.74rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--rose-deep); text-decoration: none; padding: 0.55rem 1.1rem; border: 1px solid var(--gold-light); border-radius: 999px; background: var(--warm-white); transition: background 0.25s, color 0.25s, border-color 0.25s; }
+    .shop-menu a:hover { border-color: var(--gold); color: var(--gold); }
+    .shop-menu a.active { background: var(--gold); border-color: var(--gold); color: #fff; }
     @media (max-width: 900px) {
-      .shop-menu ul { justify-content: flex-start; gap: 1.6rem; padding: 0.85rem 1.5rem; }
-      .shop-menu a { font-size: 0.66rem; }
+      .shop-menu ul { justify-content: flex-start; gap: 0.5rem; padding: 0.75rem 1.25rem; }
+      .shop-menu a { font-size: 0.7rem; padding: 0.5rem 0.95rem; }
     }
 
     /* FOOTER (matches homepage) */
