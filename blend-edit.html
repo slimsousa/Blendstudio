@@ -137,13 +137,46 @@
     .btn-outline:hover { background: var(--gold-light); color: var(--charcoal); }
 
 
+
+    /* HOLIDAY EDIT (seasonal) */
+    .holiday { position: relative; background: radial-gradient(ellipse at top, #6b2a38 0%, #4a1c27 55%, #3a1520 100%); color: #f6e9e4; padding: 5.5rem 2rem 5rem; overflow: hidden; }
+    .holiday::before { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .55;
+      background-image: radial-gradient(circle, rgba(232,201,140,.9) 0 1.2px, transparent 1.6px), radial-gradient(circle, rgba(255,255,255,.7) 0 1px, transparent 1.4px), radial-gradient(circle, rgba(232,201,140,.6) 0 1.6px, transparent 2px);
+      background-size: 140px 140px, 90px 90px, 220px 220px; background-position: 10px 20px, 50px 70px, 120px 40px; }
+    .holiday-inner { position: relative; max-width: 1200px; margin: 0 auto; }
+    .holiday-head { text-align: center; max-width: 680px; margin: 0 auto 3.5rem; }
+    .holiday-eyebrow { font-size: 0.72rem; letter-spacing: 0.38em; text-transform: uppercase; color: #e8c98c; margin-bottom: 1rem; }
+    .holiday-title { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(2.6rem, 6vw, 4.2rem); line-height: 1.05; color: #fcf6f3; }
+    .holiday-title em { font-style: italic; color: #e8c98c; }
+    .holiday-ribbon { width: 120px; height: 1px; margin: 1.4rem auto 1.4rem; background: linear-gradient(90deg, transparent, #e8c98c, transparent); position: relative; }
+    .holiday-ribbon::after { content: "✦"; position: absolute; left: 50%; top: 50%; transform: translate(-50%,-55%); color: #e8c98c; font-size: 0.8rem; background: #5a2230; padding: 0 0.5rem; }
+    .holiday-intro { font-size: 1rem; line-height: 1.85; color: rgba(252,246,243,.85); }
+    .holiday-limited { margin-top: 0.9rem; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.05rem; color: #e8c98c; }
+    .holiday-tier { margin-top: 3.2rem; }
+    .holiday-tier-label { text-align: center; margin-bottom: 0.4rem; }
+    .holiday-tier-label span { display: inline-block; font-size: 0.74rem; letter-spacing: 0.3em; text-transform: uppercase; color: #3a1520; background: #e8c98c; padding: 0.5rem 1.3rem; }
+    .holiday-tier-sub { text-align: center; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.1rem; color: rgba(252,246,243,.8); margin-bottom: 1.8rem; }
+    .holiday .edit-card { border-color: rgba(232,201,140,.35); box-shadow: 0 22px 50px rgba(0,0,0,.28); }
+    .holiday .edit-card::before { background: #c9a35f; }
+    .holiday .edit-brand { color: #9c5a50; }
+    .holiday .edit-name { color: var(--charcoal); }
+    .holiday .edit-why { color: var(--charcoal); }
+    .holiday .edit-note { color: #8a6f6b; }
+    .holiday .shop-btn { border-color: #6b2a38; color: #6b2a38; }
+    .holiday .shop-btn:hover { background: #6b2a38; color: #fff; }
+    @media (max-width: 900px) { .holiday { padding: 4rem 1.25rem 3.5rem; } }
+
     /* SHOP MENU (sticky category bar) */
     .shop-menu { position: sticky; top: var(--nav-h, 86px); z-index: 90; background: var(--blush); border-bottom: 1px solid var(--gold-light); box-shadow: 0 6px 18px rgba(74,44,46,0.06); display: block; padding: 0; }
-    .shop-menu ul { list-style: none; display: flex; justify-content: center; gap: 0.6rem; padding: 0.85rem 2rem; overflow-x: auto; scrollbar-width: none; white-space: nowrap; }
+    .shop-menu ul { list-style: none; display: flex; justify-content: flex-start; gap: 0.6rem; padding: 0.85rem 2rem; overflow-x: auto; scrollbar-width: none; white-space: nowrap; }
     .shop-menu ul::-webkit-scrollbar { display: none; }
+    .shop-menu li:first-child { margin-left: auto; }
+    .shop-menu li:last-child { margin-right: auto; }
     .shop-menu a { display: inline-block; font-size: 0.74rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--rose-deep); text-decoration: none; padding: 0.55rem 1.1rem; border: 1px solid var(--gold-light); border-radius: 999px; background: var(--warm-white); transition: background 0.25s, color 0.25s, border-color 0.25s; }
     .shop-menu a:hover { border-color: var(--gold); color: var(--gold); }
     .shop-menu a.active { background: var(--gold); border-color: var(--gold); color: #fff; }
+    .shop-menu a.menu-holiday { background: #5a2230; border-color: #5a2230; color: #e8c98c; }
+    .shop-menu a.menu-holiday.active, .shop-menu a.menu-holiday:hover { background: #6b2a38; border-color: #c9a35f; color: #fff; }
     @media (max-width: 900px) {
       .shop-menu ul { justify-content: flex-start; gap: 0.5rem; padding: 0.75rem 1.25rem; }
       .shop-menu a { font-size: 0.7rem; padding: 0.5rem 0.95rem; }
@@ -213,6 +246,7 @@
 <!-- SHOP MENU -->
 <nav class="shop-menu" aria-label="Shop by category">
   <ul>
+    <li><a href="#holiday" class="menu-holiday">✦ Holiday</a></li>
     <li><a href="#missha">Brands</a></li>
     <li><a href="#skincare">Skincare</a></li>
     <li><a href="#complexion">Complexion</a></li>
@@ -225,6 +259,123 @@
     <li><a href="#trending">Trending</a></li>
   </ul>
 </nav>
+
+<!-- HOLIDAY EDIT (seasonal: remove after the holidays) -->
+<div class="holiday" id="holiday">
+  <div class="holiday-inner">
+    <div class="holiday-head">
+      <p class="holiday-eyebrow">✦ Gift Guide ✦</p>
+      <h2 class="holiday-title">The Holiday <em>Edit</em></h2>
+      <div class="holiday-ribbon"></div>
+      <p class="holiday-intro">Gift sets worth unwrapping, from stocking stuffers to the big splurge. Shopping for a bride-to-be, a bridesmaid, or yourself? Start here.</p>
+      <p class="holiday-limited">Holiday sets are limited edition and sell out fast.</p>
+    </div>
+    <div class="holiday-tier">
+      <p class="holiday-tier-label"><span>Stocking Stuffers</span></p>
+      <p class="holiday-tier-sub">Little luxuries that make a big impression.</p>
+      <div class="edit-grid">
+      <article class="edit-card">
+        <div class="edit-img"><img src="holiday-elf-lip-oil-kit.jpg" alt="e.l.f. Glow Reviver Plumping Lip Oil Kit with four lip oils" loading="lazy" width="800" height="800"></div>
+        <div class="edit-body">
+          <p class="edit-brand">e.l.f.</p>
+          <h3 class="edit-name">Glow Reviver Plumping Lip Oil Kit</h3>
+          <p class="edit-why">Four plumping lip oils in pink, berry, mauve, and a gold shimmer. Glossy, comfortable, and an easy yes for every name on your list.</p>
+          <p class="edit-note">Great for bridesmaid gifts.</p>
+          <div class="edit-cta"><a class="shop-btn" href="https://link.amazon/B0dU9yqkH" target="_blank" rel="sponsored nofollow noopener">Shop the Set →</a></div>
+        </div>
+      </article>
+      <article class="edit-card">
+        <div class="edit-img"><img src="holiday-lancome-lash-idole-set.jpg" alt="Lancome Lash Idole Flutter Extension mascara holiday set with mini mascara and lip balm" loading="lazy" width="800" height="800"></div>
+        <div class="edit-body">
+          <p class="edit-brand">Lanc&ocirc;me</p>
+          <h3 class="edit-name">Lash Id&ocirc;le Flutter Extension Mascara Set</h3>
+          <p class="edit-why">A full-size Lash Id&ocirc;le Flutter Extension mascara, a mini to tuck in her purse, and a pretty pink lip balm, all in a sparkly holiday box. A little luxury that feels like a big gift.</p>
+          <p class="edit-note">The mini is perfect for touch-ups on the go.</p>
+          <div class="edit-cta"><a class="shop-btn" href="https://link.amazon/B02PbYTOZ" target="_blank" rel="sponsored nofollow noopener">Shop the Set →</a></div>
+        </div>
+      </article>
+      <article class="edit-card">
+        <div class="edit-img"><img src="holiday-bobbi-brown-mini-lip-trio.jpg" alt="Bobbi Brown Mini Crushed Lip Trio with three mini glosses" loading="lazy" width="800" height="800"></div>
+        <div class="edit-body">
+          <p class="edit-brand">Bobbi Brown</p>
+          <h3 class="edit-name">Mini Crushed Lip Trio</h3>
+          <p class="edit-why">Three mini glosses: a shimmery champagne pink and two soft, rosy nudes. Flattering on just about everyone, and small enough to keep one in every bag. Bobbi Brown will always be close to my heart.</p>
+          <p class="edit-note">Wear them alone or layer the shimmer on top.</p>
+          <div class="edit-cta"><a class="shop-btn" href="https://link.amazon/B0ew3d5Ld" target="_blank" rel="sponsored nofollow noopener">Shop the Set →</a></div>
+        </div>
+      </article>
+      </div>
+    </div>
+    <div class="holiday-tier">
+      <p class="holiday-tier-label"><span>Under the Tree</span></p>
+      <p class="holiday-tier-sub">The gifts she&rsquo;ll actually use, beautifully boxed.</p>
+      <div class="edit-grid">
+      <article class="edit-card">
+        <div class="edit-img"><img src="holiday-dalba-spray-serum-set.jpg" alt="d'Alba White Truffle Spray Serum gift box with three spray serums" loading="lazy" width="800" height="800"></div>
+        <div class="edit-body">
+          <p class="edit-brand">d&rsquo;Alba</p>
+          <h3 class="edit-name">White Truffle Spray Serum Gift Set</h3>
+          <p class="edit-why">These are great for prepping the skin before makeup and refreshing it after. Three spray serums&mdash;soothing, hydrating, and cooling&mdash;in a gift box that&rsquo;s ready to hand over.</p>
+          <div class="edit-cta"><a class="shop-btn" href="https://link.amazon/B0iD7CMu1" target="_blank" rel="sponsored nofollow noopener">Shop the Set →</a></div>
+        </div>
+      </article>
+      <article class="edit-card">
+        <div class="edit-img"><img src="holiday-tarte-stay-golden-set.jpg" alt="tarte Stay Golden Amazonian Clay Cheek Set with four blushes and a highlighter" loading="lazy" width="800" height="800"></div>
+        <div class="edit-body">
+          <p class="edit-brand">tarte</p>
+          <h3 class="edit-name">Stay Golden Amazonian Clay Cheek Set</h3>
+          <p class="edit-why">Four mini blushes and a highlighter in gold engraved compacts. I&rsquo;d always rather see someone gift a set of shades than a single blush&mdash;more options, more fun.</p>
+          <div class="edit-cta"><a class="shop-btn" href="https://link.amazon/B03Pt863M" target="_blank" rel="sponsored nofollow noopener">Shop the Set →</a></div>
+        </div>
+      </article>
+      <article class="edit-card">
+        <div class="edit-img"><img src="holiday-abh-sugar-kissed-lip-set.jpg" alt="Anastasia Beverly Hills Sugar Kissed Lip Set with liner, lipstick and gloss" loading="lazy" width="800" height="800"></div>
+        <div class="edit-body">
+          <p class="edit-brand">Anastasia Beverly Hills</p>
+          <h3 class="edit-name">Sugar Kissed Lip Set</h3>
+          <p class="edit-why">A full lip look in one box: liner, matte lipstick, and a shimmer gloss to top it off. Perfect for anyone who loves a lip combo but doesn&rsquo;t know where to start.</p>
+          <div class="edit-cta"><a class="shop-btn" href="https://link.amazon/B0hG21iwr" target="_blank" rel="sponsored nofollow noopener">Shop the Set →</a></div>
+        </div>
+      </article>
+      <article class="edit-card">
+        <div class="edit-img"><img src="holiday-abh-definition-edit-kit.jpg" alt="Anastasia Beverly Hills The Definition Edit Kit with mascara, eyeshadow palette and brow gel" loading="lazy" width="800" height="800"></div>
+        <div class="edit-body">
+          <p class="edit-brand">Anastasia Beverly Hills</p>
+          <h3 class="edit-name">The Definition Edit Kit</h3>
+          <p class="edit-why">Eyes and brows, done. A mini Lash Sculpt mascara, the Spice eyeshadow palette, and Brow Freeze to keep brows in place all day.</p>
+          <p class="edit-note">Pair it with the Sugar Kissed Lip Set for a complete look.</p>
+          <div class="edit-cta"><a class="shop-btn" href="https://link.amazon/B0efJsLSY" target="_blank" rel="sponsored nofollow noopener">Shop the Set →</a></div>
+        </div>
+      </article>
+      <article class="edit-card">
+        <div class="edit-img"><img src="holiday-abh-glidr-set.jpg" alt="Anastasia Beverly Hills 5 Days of GLIDR shadow stick set" loading="lazy" width="800" height="800"></div>
+        <div class="edit-body">
+          <p class="edit-brand">Anastasia Beverly Hills</p>
+          <h3 class="edit-name">5 Days of GLIDR Shadow Stick Set</h3>
+          <p class="edit-why">Five shadow sticks in plum, rose, amethyst, silver, and graphite. Swipe, blend with a fingertip, and go&mdash;made for holiday parties and New Year&rsquo;s Eve.</p>
+          <div class="edit-cta"><a class="shop-btn" href="https://link.amazon/B04HA7Std" target="_blank" rel="sponsored nofollow noopener">Shop the Set →</a></div>
+        </div>
+      </article>
+      </div>
+    </div>
+    <div class="holiday-tier">
+      <p class="holiday-tier-label"><span>The Splurge</span></p>
+      <p class="holiday-tier-sub">For the person who deserves a little extra sparkle.</p>
+      <div class="edit-grid">
+      <article class="edit-card">
+        <div class="edit-img"><img src="holiday-charlotte-tilbury-hollywood-set.jpg" alt="Charlotte Tilbury Iconic Hollywood Beauty Secrets set" loading="lazy" width="800" height="800"></div>
+        <div class="edit-body">
+          <p class="edit-brand">Charlotte Tilbury</p>
+          <h3 class="edit-name">Iconic Hollywood Beauty Secrets</h3>
+          <p class="edit-why">The Hollywood glow in one box: a mini Big Lip Plumpgasm, the Beauty Light Wand in Spotlight, a full-size Exagger-Eyes mascara, and a mini Airbrush Flawless Setting Spray. The gift she&rsquo;ll remember.</p>
+          <p class="edit-note">Perfect for a maid of honor or a bride-to-be.</p>
+          <div class="edit-cta"><a class="shop-btn" href="https://link.amazon/B06RMiVeC" target="_blank" rel="sponsored nofollow noopener">Shop the Set →</a></div>
+        </div>
+      </article>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- MISSHA -->
 <section class="brand-section" id="missha">
