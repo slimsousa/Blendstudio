@@ -57,6 +57,16 @@
     .btn-primary:hover { background: var(--charcoal); }
     .btn-ghost-light { font-size: 0.78rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.75); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.4); padding-bottom: 2px; transition: color 0.3s; }
     .btn-ghost-light:hover { color: var(--gold-light); }
+    .hero-actions .btn-outline-light { display: inline-block; padding: calc(1rem - 1px) 2.4rem; border: 1px solid var(--gold-light); color: var(--gold-light); background: rgba(42,38,34,0.25); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; transition: background 0.3s, color 0.3s; }
+    .hero-actions .btn-outline-light:hover { background: var(--gold-light); color: var(--charcoal); }
+    @media (max-width: 900px) {
+      .hero-actions { flex-direction: column; gap: 0.8rem; }
+      .hero-actions .btn-primary, .hero-actions .btn-outline-light { width: 100%; max-width: 320px; text-align: center; box-sizing: border-box; padding-left: 1rem; padding-right: 1rem; letter-spacing: 0.16em; }
+      #hero-banner { height: auto; min-height: 100vh; }
+      #hero-banner .hero-content { padding: 7.5rem 1.5rem 4rem; }
+      #hero-banner .hero-scroll { display: none; }
+      .hero-actions .hero-portfolio-btn { display: none; }
+    }
     .hero-scroll { position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%); z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 0.4rem; color: rgba(255,255,255,0.5); font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; }
     .hero-scroll-line { width: 1px; height: 40px; background: rgba(255,255,255,0.3); animation: scrollPulse 2s infinite; }
     @keyframes scrollPulse { 0%,100%{opacity:0.3} 50%{opacity:1} }
@@ -243,7 +253,7 @@
 </nav>
 
 <section id="hero-banner">
-  <div class="hero-bg" style="background-image: url('IMG_3316.jpeg');">
+  <div class="hero-bg" style="background-image: url('IMG_3316.jpeg');"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <p class="hero-eyebrow">Bridal Makeup Artist · South Shore · Cape Cod · Boston · Rhode Island</p>
@@ -251,7 +261,8 @@
     <p class="hero-sub">Classic technique meets modern artistry. Timeless looks crafted for the bride who wants to feel effortlessly, authentically herself.</p>
     <div class="hero-actions">
       <a href="#booking" class="btn-primary">Inquire About Your Date</a>
-      <a href="#portfolio" class="btn-ghost-light">View Portfolio</a>
+      <a href="#portfolio" class="btn-outline-light hero-portfolio-btn">View Portfolio</a>
+      <a href="blend-edit.html" class="btn-outline-light">Shop My Kit</a>
     </div><!-- As Seen On Badges -->
 <div style="display:flex;justify-content:center;align-items:center;gap:1.5rem;margin-top:2rem;flex-wrap:wrap;">
   <a target="_blank" href="https://www.theknot.com/marketplace/redirect-2104019?utm_source=vendor_website&utm_medium=banner&utm_term=cf7e18ff-8d1b-4f34-b583-a6c11e9c8179&utm_campaign=vendor_badge_assets"><img alt="As Seen on The Knot" border="0" src="https://d13ns7kbjmbjip.cloudfront.net/For_Your_Website/TK-badge_AsSeen.png" width="130"></a>
