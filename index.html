@@ -234,9 +234,79 @@
       .footer-bottom { padding: 1rem 2rem; }
       .about-accent-box { display: none; }
     }
+
+    /* ===== Holiday banner (shows Nov 20 - Jan 4 every year, automatically) ===== */
+    .bs-holiday { display: none; }
+    html.bs-holiday-on .bs-holiday { display: block; position: fixed; top: 0; left: 0; right: 0; height: 44px; z-index: 101; background: #1f3a2e; overflow: hidden; text-decoration: none; }
+    html.bs-holiday-on nav { top: 44px; }
+    html.bs-holiday-on { scroll-padding-top: 144px; }
+    html.bs-holiday-on #hero-banner { margin-top: 44px; }
+    .bs-holiday-track { display: flex; width: max-content; white-space: nowrap; padding-top: 9px; animation: bsHolidayScroll 45s linear infinite; }
+    .bs-holiday-track span { display: inline-flex; align-items: center; gap: 28px; padding: 0 28px; font-family: 'Jost', sans-serif; font-size: 0.72rem; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; color: #d4b896; }
+    .bs-holiday-track svg { width: 13px; height: 13px; flex: none; }
+    .bs-holiday:hover .bs-holiday-track { animation-play-state: paused; }
+    .bs-holiday-lights { position: absolute; left: 0; right: 0; bottom: 4px; display: flex; justify-content: space-around; pointer-events: none; }
+    .bs-holiday-lights b { width: 5px; height: 5px; border-radius: 50%; animation: bsHolidaySparkle 1.5s ease-in-out infinite; }
+    .bs-holiday-lights b.g { background: #e8c98a; box-shadow: 0 0 5px 2px rgba(240,205,140,0.55); }
+    .bs-holiday-lights b.r { background: #e0303a; box-shadow: 0 0 5px 2px rgba(255,60,70,0.65); }
+    @keyframes bsHolidayScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @keyframes bsHolidaySparkle { 0%, 100% { opacity: 1; transform: scale(1); } 45% { opacity: 0.3; transform: scale(0.7); box-shadow: none; } 60% { opacity: 1; transform: scale(1.25); } }
+    @media (max-width: 900px) {
+      html.bs-holiday-on .bs-holiday { height: 36px; }
+      html.bs-holiday-on nav { top: 36px; }
+      html.bs-holiday-on { scroll-padding-top: 103px; }
+      html.bs-holiday-on #hero-banner { margin-top: 36px; }
+      .bs-holiday-track { padding-top: 7px; }
+      .bs-holiday-track span { font-size: 0.62rem; gap: 20px; padding: 0 20px; }
+      .bs-holiday-track svg { width: 11px; height: 11px; }
+      .bs-holiday-lights { bottom: 3px; }
+      .bs-holiday-lights b { width: 4px; height: 4px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .bs-holiday-track { animation: none; width: 100%; justify-content: center; }
+      .bs-holiday-track span:not(:first-child) { display: none; }
+      .bs-holiday-lights b { animation: none; }
+    }
+    /* ===== End holiday banner styles ===== */
   </style>
 </head>
 <body>
+
+<!-- ===== Holiday banner: appears Nov 20 - Jan 4 each year on its own. To retire it for good, delete from here to "End holiday banner". ===== -->
+<script>
+  (function () {
+    var d = new Date(), m = d.getMonth(), day = d.getDate();
+    if ((m === 10 && day >= 20) || m === 11 || (m === 0 && day <= 4)) {
+      document.documentElement.classList.add('bs-holiday-on');
+    }
+  })();
+</script>
+<a href="#booking" class="bs-holiday" aria-label="Happy holidays from Blend Studio. Check your date">
+  <div class="bs-holiday-track" id="bsHolidayTrack"></div>
+  <div class="bs-holiday-lights" id="bsHolidayLights" aria-hidden="true"></div>
+</a>
+<script>
+  (function () {
+    if (!document.documentElement.classList.contains('bs-holiday-on')) return;
+    var d = new Date();
+    var bookingYear = d.getMonth() === 0 ? d.getFullYear() : d.getFullYear() + 1;
+    var flake = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M12 2v20M3.3 7l17.4 10M20.7 7L3.3 17M9.5 3.5L12 6l2.5-2.5M9.5 20.5L12 18l2.5 2.5M3.6 10.2l3.3-.9-.9-3.3M20.4 13.8l-3.3.9.9 3.3M6 18l.9-3.3-3.3-.9M18 6l-.9 3.3 3.3.9"/></svg>';
+    var msgs = ['Happy Holidays from Blend Studio', 'Wishing you a beautiful season', 'Now booking ' + bookingYear + ' brides'];
+    var half = '';
+    for (var r = 0; r < 2; r++) for (var i = 0; i < msgs.length; i++) half += '<span>' + msgs[i] + flake + '</span>';
+    document.getElementById('bsHolidayTrack').innerHTML = half + half;
+    var lights = document.getElementById('bsHolidayLights');
+    var count = Math.max(16, Math.min(48, Math.round(window.innerWidth / 38)));
+    for (var j = 0; j < count; j++) {
+      var b = document.createElement('b');
+      b.className = (j % 3 === 1) ? 'r' : 'g';
+      b.style.animationDelay = (Math.random() * 1.6).toFixed(2) + 's';
+      b.style.animationDuration = (1.1 + Math.random() * 0.9).toFixed(2) + 's';
+      lights.appendChild(b);
+    }
+  })();
+</script>
+<!-- ===== End holiday banner ===== -->
 
 <nav>
   <a href="#hero-banner" class="nav-logo">Blend<span>.</span>Studio</a>
